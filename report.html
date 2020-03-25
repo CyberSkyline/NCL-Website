@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>NCL Annual Report</title>
+    <style>
+      #annual-report a {
+        cursor: pointer;
+        transition: opacity 0.2s ease 0s;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+  </head>
+  <body>
+    <div id="annual-report">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 636.3 672.7">
+        <defs>
+          <path id="REPORT_SVGID_a_" d="M636.3 201.8V67.3L477.3 0 318 67.3 159.1 0 0 67.3v134.5l159 67.3v134.5L0 471v134.6l159 67.2 159.1-67.2 159.1 67.2 159-67.2V470.9l-159-67.3V269.1z"/>
+        </defs>
+        <clipPath id="REPORT_SVGID_b_">
+          <use xlink:href="#REPORT_SVGID_a_" overflow="visible"/>
+        </clipPath>
+        <g clip-path="url(#REPORT_SVGID_b_)">
+          <image width="2652" height="2804" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-dark-full.png" transform="matrix(.24 0 0 .24 0 0)" overflow="visible"/>
+        </g>
+        <g>
+          <a id="partners">
+            <defs>
+              <path id="REPORT_SVGID_c_" d="M636.3 605.5V470.9l-159-67.3L318 471v134.6l159.1 67.2z"/>
+            </defs>
+            <clipPath id="REPORT_SVGID_d_">
+              <use xlink:href="#REPORT_SVGID_c_" overflow="visible"/>
+            </clipPath>
+            <g clip-path="url(#REPORT_SVGID_d_)">
+              <image width="1327" height="1123" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-light-partners.png" transform="matrix(.24 0 0 .24 318 403.4)" overflow="visible"/>
+            </g>
+          </a>
+          <a id="coaches">
+            <defs>
+              <path id="REPORT_SVGID_e_" d="M318.1 605.5V470.9l-159-67.3L0 471v134.6l159 67.2z"/>
+            </defs>
+            <clipPath id="REPORT_SVGID_f_">
+              <use xlink:href="#REPORT_SVGID_e_" overflow="visible"/>
+            </clipPath>
+            <g clip-path="url(#REPORT_SVGID_f_)">
+              <image width="1327" height="1123" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-light-coaches.png" transform="matrix(.24 0 0 .24 -.2 403.4)" overflow="visible"/>
+            </g>
+          </a>
+          <a id="team">
+            <defs>
+              <path id="REPORT_SVGID_g_" d="M477.2 403.6V269.1l-159-67.3L159 269.1v134.5L318 471z"/>
+            </defs>
+            <clipPath id="REPORT_SVGID_h_">
+              <use xlink:href="#REPORT_SVGID_g_" overflow="visible"/>
+            </clipPath>
+            <g clip-path="url(#REPORT_SVGID_h_)">
+              <image width="1327" height="1122" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-light-team.png" transform="matrix(.24 0 0 .24 159 201.7)" overflow="visible"/>
+            </g>
+          </a>
+          <a id="ambassadors">
+            <defs>
+              <path id="REPORT_SVGID_i_" d="M636.3 201.8V67.3L477.3 0 318 67.3v134.5l159.1 67.3z"/>
+            </defs>
+            <clipPath id="REPORT_SVGID_j_">
+              <use xlink:href="#REPORT_SVGID_i_" overflow="visible"/>
+            </clipPath>
+            <g clip-path="url(#REPORT_SVGID_j_)">
+              <image width="1327" height="1122" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-light-ambassadors.png" transform="matrix(.24 0 0 .24 318 0)" overflow="visible"/>
+            </g>
+          </a>
+          <a id="players">
+            <defs>
+              <path id="REPORT_SVGID_k_" d="M318.1 201.8V67.3L159.1 0 0 67.3v134.5l159 67.3z"/>
+            </defs>
+            <clipPath id="REPORT_SVGID_l_">
+              <use xlink:href="#REPORT_SVGID_k_" overflow="visible"/>
+            </clipPath>
+            <g clip-path="url(#REPORT_SVGID_l_)">
+              <image width="1327" height="1123" xlink:href="https://cyberskyline.github.io/NCL-Website/pieces/report-light-players.png" transform="matrix(.24 0 0 .24 0 0)" overflow="visible"/>
+            </g>
+          </a>
+        </g>
+      </svg>
+    </div>
+    <script>
+      $(document).ready(function() {
+        // the puzzle will cycle in the order below
+        var categories = [
+          { id : 'players', url : '/players' },
+          { id : 'partners', url : '/partner' },
+          { id : 'coaches', url : '/coaches' },
+          { id : 'team', url : '/ncl-team' },
+          { id : 'ambassadors', url : '/ambassadors' },
+        ];
+
+        var userInteracted = false;
+        var AUTO_INTERVAL_MS = 2000;
+        var RESTART_AFTER_MS = 5000;
+        var currentCategory;
+        var restartCycleTimeout;
+
+        // auto cycle before user interaction
+        var index = 0;
+
+        var _interval;
+        function autoRotate() {
+          if (currentCategory) {
+            currentCategory.css('opacity', 100);
+          }
+          if (userInteracted) {
+            clearInterval(_interval);
+            return;
+          }
+          currentCategory = categories[index].element;
+          currentCategory.css('opacity', 0);
+          index++;
+          // reset index
+          if (index >= categories.length) {
+            index = 0;
+          }
+        }
+
+        _interval = setInterval(autoRotate, AUTO_INTERVAL_MS);
+
+
+        categories.forEach(function(category) {
+          var id = category.id;
+          var url = category.url;
+          var element = $('#annual-report #' + id);
+          category.element = element;
+          // var desktop = $('#puzzle #desktop ' + id);
+          // var mobile = $('#puzzle #mobile ' + id);
+          element.attr('href', url);
+
+          element.on('mouseenter', function() {
+            if (currentCategory) { // if was on auto cycle
+              currentCategory.css('opacity', 1);
+            }
+            userInteracted = true;
+            element.css('opacity', 0);
+          });
+
+          element.on('mouseleave', function() {
+            element.css('opacity', 1);
+            clearTimeout(restartCycleTimeout);
+            restartCycleTimeout = setTimeout(function() {
+              userInteracted = false;
+              _interval = setInterval(autoRotate, AUTO_INTERVAL_MS);
+            }, RESTART_AFTER_MS);
+          });
+        });
+
+        autoRotate(); // fire the first animation
+      });
+    </script>
+  </body>
+</html>
+
