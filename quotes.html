@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.min.js"></script>
+    <style>
+      #student-testimonials-body ol,
+      #student-testimonials-body ul,
+      #student-testimonials-body li,
+      #student-testimonials-body table {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+
+      #student-testimonials-body  {
+        line-height: 1;
+      }
+      #student-testimonials-body ol, #student-testimonials-body ul {
+        list-style: none;
+      }
+
+      #student-testimonials-body table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* --------------------------------
+      Primary style
+      -------------------------------- */
+      #student-testimonials-body *, #student-testimonials-body *:after, #student-testimonials-body *:before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      #student-testimonials-body  {
+        font-size: 100%;
+        color: #39393c;
+        background-color: rgba(0,0,0,0);
+      }
+
+      #student-testimonials-body a {
+        color: #79b6e4;
+        text-decoration: none;
+      }
+
+      /* --------------------------------
+      Main components
+      -------------------------------- */
+      .cd-testimonials-wrapper {
+        position: relative;
+        width: 90%;
+        max-width: 768px;
+        background-color: #39393c;
+        margin: 2em auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 20px 40px 70px;
+        z-index: 1;
+      }
+
+      @media only screen and (min-width: 768px) {
+        .cd-testimonials-wrapper {
+          margin: 4em auto;
+          padding: 64px 50px;
+        }
+      }
+      @media only screen and (min-width: 1170px) {
+        .cd-testimonials-wrapper::after {
+          /* quotation mark visible */
+          display: block;
+        }
+      }
+      .cd-testimonials-wrapper ul {
+        list-style: none;
+      }
+
+      .cd-testimonials {
+        color: #ffffff;
+        text-align: center;
+      }
+      .cd-testimonials::after {
+        clear: both;
+        content: "";
+        display: table;
+      }
+      .cd-testimonials > li {
+        position: absolute;
+        opacity: 0;
+        min-height: 150px;
+      }
+      .cd-testimonials > li:first-child {
+        position: relative;
+        opacity: 1;
+      }
+      .cd-testimonials p {
+        line-height: 1.4;
+        margin-bottom: 1em;
+        padding: 0 14px;
+      }
+      @media only screen and (min-width: 768px) {
+        .cd-testimonials p {
+          font-size: 1.25rem;
+        }
+      }
+      @media only screen and (min-width: 1170px) {
+        .cd-testimonials p {
+          font-size: 1.5rem;
+          line-height: 1.6;
+        }
+      }
+
+      .cd-author img, .cd-author .cd-author-info {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .cd-author .cd-author-info {
+        text-align: left;
+        line-height: 1.2;
+        font-size: 1rem;
+      }
+
+      @media only screen and (min-width: 768px) {
+        .cd-author .cd-author-info {
+          line-height: 1.4;
+        }
+      }
+
+      .flex-direction-nav li {
+        position: absolute;
+        height: 100%;
+        width: 40px;
+        top: 0;
+      }
+      .flex-direction-nav li:first-child {
+        left: 0;
+      }
+      .flex-direction-nav li:last-child {
+        right: 0;
+      }
+      .flex-direction-nav li a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        /* image replacement */
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+        -webkit-transition: background-color 0.2s;
+        -moz-transition: background-color 0.2s;
+        transition: background-color 0.2s;
+      }
+      .no-touch .flex-direction-nav li a:hover {
+        background-color: #323234;
+      }
+      .flex-direction-nav li a::before, .flex-direction-nav li a::after {
+        /* left and right arrows in css only */
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 2px;
+        height: 13px;
+        background-color: #ffffff;
+      }
+      .flex-direction-nav li a::before {
+        -webkit-transform: translateY(-35px) rotate(45deg);
+        -moz-transform: translateY(-35px) rotate(45deg);
+        -ms-transform: translateY(-35px) rotate(45deg);
+        -o-transform: translateY(-35px) rotate(45deg);
+        transform: translateY(-35px) rotate(45deg);
+      }
+      .flex-direction-nav li a::after {
+        -webkit-transform: translateY(-27px) rotate(-45deg);
+        -moz-transform: translateY(-27px) rotate(-45deg);
+        -ms-transform: translateY(-27px) rotate(-45deg);
+        -o-transform: translateY(-27px) rotate(-45deg);
+        transform: translateY(-27px) rotate(-45deg);
+      }
+      .flex-direction-nav li:last-child a::before {
+        -webkit-transform: translateY(-35px) rotate(-45deg);
+        -moz-transform: translateY(-35px) rotate(-45deg);
+        -ms-transform: translateY(-35px) rotate(-45deg);
+        -o-transform: translateY(-35px) rotate(-45deg);
+        transform: translateY(-35px) rotate(-45deg);
+      }
+      .flex-direction-nav li:last-child a::after {
+        -webkit-transform: translateY(-27px) rotate(45deg);
+        -moz-transform: translateY(-27px) rotate(45deg);
+        -ms-transform: translateY(-27px) rotate(45deg);
+        -o-transform: translateY(-27px) rotate(45deg);
+        transform: translateY(-27px) rotate(45deg);
+      }
+      @media only screen and (min-width: 768px) {
+        .flex-direction-nav li {
+          width: 80px;
+        }
+      }
+      @media only screen and (min-width: 1170px) {
+        .flex-direction-nav li a::before, .flex-direction-nav li a::after {
+          background-color: #5e5e63;
+          -webkit-transition: background-color 0.2s;
+          -moz-transition: background-color 0.2s;
+          transition: background-color 0.2s;
+        }
+        .flex-direction-nav li a:hover::before, .flex-direction-nav li a:hover::after {
+          background-color: #ffffff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="student-testimonials-body">
+      <div id="student-testimonials-wrapper" class="cd-testimonials-wrapper cd-container" style="min-height: 320px">
+        <ul id='student-testimonials' class="cd-testimonials">
+        </ul> <!-- cd-testimonials -->
+      </div> <!-- cd-testimonials-wrapper -->
+      <script>
+        var AUTO_SCROLL_DELAY_MS = 1000;
+  			jQuery(document).ready(function($){
+          // populate the quotes
+          jQuery.getJSON('https://cyberskyline.com/static/misc/ncl_data/quotes.json?t=325', function(quotes) {
+            var $testimonials = $('#student-testimonials');
+            quotes.forEach(function(entry) {
+              var school = entry.school;
+              var quote = entry.quote;
+              var $element = $('<li><p>' + quote + '</p><div class="cd-author">Student from ' + school + '</div></li>');
+              $testimonials.append($element);
+            });
+
+            //create the slider
+            $('#student-testimonials-wrapper').flexslider({
+              selector: "#student-testimonials > li",
+              animation: "slide",
+              controlNav: false,
+              slideshow: false,
+              smoothHeight: true,
+              start: function(){
+                $('#student-testimonials').children('li').css({
+                  opacity: 1,
+                  position: 'relative'
+                });
+              }
+            });
+          });
+        });
+      </script>
+    </div>
+  </body>
+</html>
